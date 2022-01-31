@@ -1,0 +1,362 @@
+VN={S, P,Q },
+VT={a, b,c,d,e,f } ,
+P= {
+1. S  aP
+2. S  bQ
+3. P  bP
+4. P  cP
+5. P  dQ
+6. P  e
+7. Q  eQ
+8. Q  fQ
+9. Q  a }
+
+VN={S, R,L },
+VT={a, b,c,d,e,f } ,
+P= { 
+1. S  aS
+2. S  bS
+3. S  cR
+4. S  dL
+5. R  dL
+6. R  e
+7. L  fL
+8. L  eL
+9. L  d}
+
+VN={S, D,R },
+VT={a, b,c,d,f } ,
+P= {
+1. S  aS
+2. S  bD
+3. S  fR
+4. D  cD
+5. D  dR
+6. R  bR
+7. R  f
+8. D  d }
+
+VN={S, L,D },
+VT={a, b,c,d,e,f,j} ,
+P= {
+1. S  aS
+2. S  bS
+3. S  cD
+4. S  dL
+5. S  e
+6. L  eL
+7. L  fL
+8. L  jD
+9. L  e
+10. D  eD
+11. D  d}
+
+VN={S, F,L },
+VT={a, b,c,d } ,
+P= {
+1. S  bS
+2. S  aF
+3. S  d
+4. F  cF
+5. F  dF
+6. F  aL
+7. L  aL
+8. L  c
+9. F  b }
+
+VN={S, I,J,K },
+VT={a,b,c,e,n,f,m} ,
+P= {
+1. S  cI
+2. I  bJ
+3. I  fI
+4. J  nJ
+5. J  cS
+6. I  eK
+7. K  nK
+8. I  e
+9. K  m}
+
+VN={S, D,E,F,L },
+VT={a, b,c,d } ,
+P= {
+1. S  aD
+2. D  bE
+3. E  cF
+4. F  dD
+5. E  dL
+6. L  aL
+7. L  bL
+8. L  c }
+
+VN={S, D,E, J}, 
+VT={a, b, c, d, e} ,
+P= {
+1. S  aD
+2. D  dE
+3. D  bJ
+4. J  cS
+5. E  e
+6. E  aE
+7. D  aE }
+
+VN={S, B,D, Q }, VT={a, b, c, d } ,
+P= {
+1. S  aB
+2. S  bB
+3. B  cD
+4. D  dQ
+5. Q  bB
+6. D  a
+7. Q  dQ}
+
+VN={S, B, L},
+VT={a, b, c } ,
+P= {
+1. S  aB
+2. B  bB
+3. B  cL
+4. L  cL
+5. L  aS
+6. L  b}
+
+VN={S, B,D },
+VT={a, b,c } ,
+P= {
+1. S  aB
+2. S  bB
+3. B  bD
+4. D  b
+5. D  aD
+6. B  cB
+7. B  aS
+}
+
+VN={S,F,D},
+VT={a,b,c } ,
+P= {
+1. S  aF
+2. F  bF
+3. F  cD
+4. S  bS
+5. D  cS
+6. D  a
+7. F  a
+}
+
+VN={S,B, D }, VT={a, b, c } ,
+P= {
+1. S  aB
+2. B  aD
+3. B  bB
+4. D  aD
+5. D  bS
+6. B  cS
+7. D  c
+}
+
+VN={S,B,D }, VT={a, b,c,d} , 
+P= {
+1. S  aS
+2. S  bB
+3. B  cB
+4. B  d
+5. B  aD
+6. D  aB
+7. D  b }
+
+VN={S, A, B}, V
+T={a, b, c},
+P={
+1. S  aS
+2. S  bS
+3. S  cA
+4. A  aB
+5. B  aB
+6. B  bB
+7. B  c }
+
+VN={S, A, B}, V
+T={a, b, c, d},
+P={
+1. S  bS
+2. S  dA
+3. A  aA
+4. A  dB
+5. B  cB
+6. A  b 
+7. B  a }
+
+VN={S, A, B, C}, V
+T={a, b, c, d},
+P={
+1. S  dA
+2. A  aB
+3. B  bC
+4. C  cB
+5. A  bA
+6. B  aB
+7. B  d }
+
+VN={S, A, B, C}, 
+VT={a, b},
+P={
+1. S  aA
+2. A  bS
+3. S  aB
+4. B  aC
+5. C  a
+6. C  bS}
+
+
+VN={S, A, B, C},
+VT={a, b},
+P={
+1. S  aA
+2. A  bS
+3. A  aB
+4. B  bC
+5. C  aA
+6. C  b }
+
+VN={S, A, B, C}, 
+VT={a, b, c, d},
+P={
+1. S  dA
+2. A  d
+3. A  aB
+4. B  bC
+5. C  cA
+6. C  aS }
+
+VN={S, B, C, D},
+VT={a, b, c},
+P={
+1. S  aB
+2. B  bS
+3. B  aC
+4. B  b
+5. C  bD
+6. D  a
+7. D  bC
+8. D  cS }
+
+VN={S, D, F}, 
+VT={a, b, c, d},
+P={
+1. S  aS
+2. S  bS
+3. S  cD
+4. D  dD
+5. D  bF
+6. D  a
+7. F  bS
+8. F  a }
+
+VN={S, B, C}, 
+VT={a, b, c},
+P={
+1. S  aB
+2. B  aC
+3. C  bB 
+4. C  c
+5. C  aS
+6. B  bB }
+
+VN={S, A, C, D}, 
+VT={a, b},
+P={
+1. S  aA
+2. A  bS
+3. A  dD
+4. D  bC
+5. C  a
+6. C  bA
+7. D  aD }
+
+VN={S, A, B},
+VT={a, b, c, d},
+P={
+1. S  bS
+2. S  dA
+3. A  aA
+4. A  dB
+5. B  cB
+6. A  b
+7. B  a }
+
+VN={S, A, B, C}, 
+VT={a, b, c, d},
+P={
+1. S  dA
+2. A  aB
+3. B  bC
+4. C  cB
+5. B  d
+6. C  aA
+7. A  b }
+
+VN={S, A, B}, 
+VT={a, b, c},
+P={
+1. S aA
+2. A bS
+3. S bB
+4. A cA
+5. A aB
+6. B aB
+7. B b }
+
+VN={S, A, B, C}, 
+VT={a, b},
+P={
+1. S  aA 
+2. A  bS
+3. A  aB
+4. B  bC
+5. C  aA
+6. B  aB
+7. C  b }
+
+VN={S, A, B, C}, 
+VT={a, b},
+P={
+1. S  bA
+2. A  b
+3. A  aB
+4. B  bC
+5. C  cA
+6. A  bA
+7. B  aB }
+
+VN={S, B, C, D}, 
+VT={a, b, c},
+P={
+1. S  aB
+2. B  bS
+3. B  aC
+4. B  c
+5. C  bD
+6. D  c
+7. D  aC }
+
+VN={S, D, R}, 
+VT={a, b, c},
+P={
+1. S  aS
+2. S  bS
+3. S  cD
+4. D  bD
+5. D  cR
+6. D  a
+7. R  b }
+
+VN={S, D, R}, 
+VT={a, b, c},
+P={
+1. S  aS
+2. S  cD
+3. D  bR
+4. R  aR
+5. R  b
+6. R  cS }
