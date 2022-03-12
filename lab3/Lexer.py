@@ -1,22 +1,22 @@
 
-
 DIGITS = '0123456789'
 
 class Error:
-    def __init__(self, pos_start, pos_end, error_name, details):
+    def __init__(self, pos_start, pos_end, error_name, details, index):
         self.pos_start = pos_start
         self.pos_end = pos_end
         self.error_name = error_name
         self.details = details
+        self.index = index
     
     def as_string(self):
-        result  = f'{self.error_name}: {self.details}\n'
+        result  = f'{self.error_name}: {self.details}, index {self.index}\n'
         result += f'File {self.pos_start.fn}, line {self.pos_start.ln + 1}'
         return result
 
 class IllegalCharError(Error):
-    def __init__(self, pos_start, pos_end, details):
-        super().__init__(pos_start, pos_end, 'Illegal Character', details)
+    def __init__(self, pos_start, pos_end, details, index):
+        super().__init__(pos_start, pos_end, 'Illegal Character', details, index)
 
 class Position:
     def __init__(self, idx, ln, col, fn, ftxt):
@@ -35,11 +35,17 @@ class Position:
             self.col = 0
 
         return self
-
+        
+    def deadvance(self, current_char):
+        self.idx-=1
+        self.col-=1
+     
+        return self
+    
     def copy(self):
         return Position(self.idx, self.ln, self.col, self.fn, self.ftxt)
 
-TT_INT	= 'INTEGER'
+TT_INT = 'INTEGER'
 TT_FLOAT = 'FLOAT'
 TT_PLUS = 'PLUS'
 TT_MINUS = 'MINUS'
@@ -50,10 +56,13 @@ TT_RPAREN = 'RPAREN'
 TT_BIGGER = 'BIGGER'
 TT_EQUAL = 'EQUAL'
 TT_SMALLER = 'SMALLER'
-KEY_WORDS = {'if','else','for','while','var','case'}
+KEY_WORDS = {'if','else','for','while','var','def','and','or','return'}
 TT_KEY_WORD = 'KEY_WORD'
-TT_VARIABLE = "VARIABLE"
-USELESS =[' ','\t','\n']
+TT_VARIABLE = "IDEN"
+TT_LBRAC = "LBRACKET"
+TT_RBRAC = "RBRACKET"
+VARIABLES={}
+USELESS =[' ','\t','\n',',']
 
 class Token:
     def __init__(self, type_, value=None):
@@ -75,6 +84,10 @@ class Lexer:
     def advance(self):
         self.pos.advance(self.current_char)
         self.current_char = self.text[self.pos.idx] if self.pos.idx < len(self.text) else None
+        
+    def deadvance(self):
+        self.pos.deadvance(self.current_char)
+        self.current_char = self.text[self.pos.idx]
 
     def make_tokens(self):
         tokens = []
@@ -111,17 +124,25 @@ class Lexer:
             elif self.current_char == '<':
                 tokens.append(Token(TT_SMALLER))
                 self.advance()
+            elif self.current_char == '{':
+                tokens.append(Token(TT_LBRAC))
+                self.advance()
+            elif self.current_char == '}':
+                tokens.append(Token(TT_RBRAC))
+                self.advance()
             elif self.current_char.isalpha():
                 word=self.make_word()
+                self.deadvance()
                 if word in KEY_WORDS:
                     tokens.append(Token(TT_KEY_WORD,str(word)))
                 else:
                     tokens.append(Token(TT_VARIABLE,str(word)))
+                self.advance()
             else:
                 pos_start = self.pos.copy()
                 char = self.current_char
                 self.advance()
-                return [], IllegalCharError(pos_start, self.pos, "'" + char + "'")
+                return [], IllegalCharError(pos_start, self.pos, f"\'{char}\'", self.pos.idx)
 
         return tokens, None
     
@@ -131,6 +152,7 @@ class Lexer:
             if self.current_char not in USELESS:
                 word+=self.current_char
             self.advance()
+
         return word
 
     def make_number(self):
